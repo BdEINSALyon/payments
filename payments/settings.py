@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'manager.apps.ManagerConfig',
     'account.apps.AccountConfig',
-    'permissions.apps.PermissionsConfig'
+    'permissions.apps.PermissionsConfig',
+    'django_countries'
 ]
 
 MIDDLEWARE = [

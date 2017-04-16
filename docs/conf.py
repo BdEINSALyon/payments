@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Payments'
-copyright = '2017, Philippe VIENNE'
+copyright = '2017, BdE INSA Lyon'
 author = 'Philippe VIENNE'
 
 # The version info for the project you're documenting, acts as replacement for

@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'manager.apps.ManagerConfig',
+    'gateway.apps.GatewayConfig',
     'account.apps.AccountConfig',
+    'trezo.apps.TrezoConfig',
+    'api.apps.ApiConfig',
+    'applications.apps.ApplicationsConfig',
     'permissions.apps.PermissionsConfig',
     'django_countries'
 ]

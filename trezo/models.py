@@ -1,7 +1,7 @@
 from django.db import models
-
-# Create your models here.
 from django_countries.fields import CountryField
+
+from applications.models import Application
 
 
 class Client(models.Model):
@@ -17,24 +17,15 @@ class Client(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-class Application(models.Model):
-    name = models.CharField(max_length=100)
-    oauth_id = models.CharField(max_length=200)
-    oauth_secret = models.CharField(max_length=200)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-
 class Product(models.Model):
     product_app_id = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=200)
-    price = models.IntegerField()  # @pvienne : not >= 0 to plan refunds
-    taxes = models.FloatField()
+    price = models.IntegerField()
+    taxes = models.FloatField(null=True)
     description = models.TextField(blank=True)
     application = models.ForeignKey(
         to=Application,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         related_name='products',
         null=True
     )
@@ -44,7 +35,7 @@ class Product(models.Model):
 
 
 class Payment(models.Model):
-    transaction_id = models.CharField(max_length=200)  # @pvienne : required.
+    transaction_id = models.CharField(max_length=200)
     amount = models.IntegerField()
 
     STARTED = 'ST'
@@ -64,7 +55,7 @@ class Payment(models.Model):
     status = models.CharField(max_length=2, choices=STATUS_CHOICES)
     client = models.ForeignKey(
         to=Client,
-        on_delete=models.CASCADE,  # @pvienne what to do if client is deleted ?
+        on_delete=models.PROTECT,  # @pvienne what to do if client is deleted ?
         related_name='payments'
     )
     products = models.ManyToManyField(
@@ -95,7 +86,7 @@ class Payment(models.Model):
         (MANUAL_ESP, 'Espèces'),
         (MANUAL_VIR, 'Virement'),
     )
-    method = models.CharField(max_length=4, choices=METHOD_CHOICES)  # @pvienne changed field name
+    method = models.CharField(max_length=4, choices=METHOD_CHOICES)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -112,22 +103,7 @@ class PaymentLog(models.Model):
     to_status = models.CharField(max_length=2, choices=Payment.STATUS_CHOICES)
     signature = models.TextField()
 
-    method_data = models.TextField()  # @pvienne Not sure about type + changed name
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-
-class ApplicationRequest(models.Model):
-    application = models.ForeignKey(
-        to=Application,
-        on_delete=models.CASCADE,  # @pvienne what to do if application is deleted ?
-        related_name='requests'
-    )
-    endpoint = models.TextField()
-    method = models.CharField(max_length=10)
-    params = models.TextField(blank=True)  # @pvienne merged GET and POST params
-    response = models.TextField(blank=True)  # @pvienne not sure about type
+    method_data = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

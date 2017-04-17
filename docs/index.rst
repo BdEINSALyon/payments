@@ -26,8 +26,7 @@ account and permissions are BdE INSA Lyon's commons package to manage user login
    :maxdepth: 2
    :caption: Contents:
 
-   deployment
-   payment_management
+   setup
 
 
 Indices and tables

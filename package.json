@@ -27,6 +27,8 @@
   "homepage": "https://github.com/BdEINSALyon/payments#readme",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
+    "datatables.net": "^1.10.13",
+    "datatables.net-bs": "^1.10.13",
     "font-awesome": "^4.7.0"
   }
 }

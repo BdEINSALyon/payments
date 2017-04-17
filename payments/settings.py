@@ -131,16 +131,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "node_modules"),
 ]
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'npm.finders.NpmFinder',
     'sass_processor.finders.CssFinder'
 ]
 
-SASS_PROCESSOR_ROOT = STATIC_ROOT
+NPM_ROOT_PATH = BASE_DIR
+NODE_MODULES_URL = STATIC_URL
+
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, "static")
 SASS_PROCESSOR_INCLUDE_DIRS = [os.path.join(path, 'sass') for path in STATICFILES_DIRS] + [
     os.path.join(BASE_DIR, 'node_modules')
 ]

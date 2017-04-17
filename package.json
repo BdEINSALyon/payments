@@ -1,0 +1,32 @@
+{
+  "name": "payments",
+  "version": "1.0.0",
+  "description": "Payments management app for BdE INSA Lyon",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BdEINSALyon/payments.git"
+  },
+  "keywords": [
+    "payment",
+    "app",
+    "api",
+    "gateway"
+  ],
+  "author": "Philippe VIENNE",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/BdEINSALyon/payments/issues"
+  },
+  "homepage": "https://github.com/BdEINSALyon/payments#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "font-awesome": "^4.7.0"
+  }
+}

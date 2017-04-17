@@ -37,12 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sass_processor',
+
     'gateway.apps.GatewayConfig',
     'account.apps.AccountConfig',
     'trezo.apps.TrezoConfig',
     'api.apps.ApiConfig',
     'applications.apps.ApplicationsConfig',
     'permissions.apps.PermissionsConfig',
+
     'django_countries'
 ]
 
@@ -126,9 +129,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder'
+]
+
+SASS_PROCESSOR_ROOT = STATIC_ROOT
+SASS_PROCESSOR_INCLUDE_DIRS = [os.path.join(path, 'sass') for path in STATICFILES_DIRS] + [
+    os.path.join(BASE_DIR, 'node_modules')
+]
+SASS_PRECISION = 8
+SASS_OUTPUT_STYLE = 'compact'
 
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/'

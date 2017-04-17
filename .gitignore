@@ -1,3 +1,10 @@
+# SASS Compiled files
+/sass
+/staticfiles
+static/sass/**/*.css
+static/sass/**/*.css.map
+static/sass/*.css
+static/sass/*.css.map
 
 # Created by https://www.gitignore.io/api/pycharm,django,python
 

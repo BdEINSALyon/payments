@@ -9,9 +9,7 @@ RUN apt-get install -y libpq-dev python-dev gcc g++ libxslt-dev libtiff5-dev lib
 ENV LIBRARY_PATH=/lib:/usr/lib
 
 # Install NPM
-RUN add-apt-repository -y ppa:chris-lea/node.js
-RUN apt-get update
-RUN apt-get -y install nodejs
+RUN apt-get -y install nodejs npm
 
 WORKDIR /app
 

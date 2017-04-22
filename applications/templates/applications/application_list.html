@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Applications</h1>
+        <div class="btn-actions">
+            <div class="btn-group">
+                <a class="btn btn-outline-success" href="">
+                    <i class="fa fa-plus"></i> Créer
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="col-md-1">ID</th>
+                <th class="col-md-5">Nom</th>
+                <th class="col-md-5">OAuth ID</th>
+                <th class="col-md-1">Production</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in object_list %}
+                <tr onclick="window.location='{% url 'application' application.pk %}'" class="mouse-over">
+                    <td>{{ application.pk }}</td>
+                    <td>{{ application.name }}</td>
+                    <td>{{ application.oauth_id }}</td>
+                    <td>
+                        {% if application.test_mode %}
+                            <i class="fa fa-times text-danger"></i>
+                        {% else %}
+                            <i class="fa fa-check text-success"></i>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

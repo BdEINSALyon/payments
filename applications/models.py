@@ -14,13 +14,13 @@ class Application(models.Model):
 class ApplicationRequest(models.Model):
     application = models.ForeignKey(
         to=Application,
-        on_delete=models.CASCADE,  # @pvienne what to do if application is deleted ?
+        on_delete=models.CASCADE,
         related_name='requests'
     )
     endpoint = models.TextField()
     method = models.CharField(max_length=10)
-    params = models.TextField(blank=True)  # @pvienne merged GET and POST params
-    response = models.TextField(blank=True)  # @pvienne not sure about type
+    params = models.TextField(blank=True)
+    response = models.TextField(blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

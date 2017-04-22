@@ -31,8 +31,12 @@
         </div>
     {% endblock %}
     {% block footer %}
-        <footer>
-            <p id="copyright-notice">&copy; 2017 BdE INSA Lyon</p>
+        <footer class="container bordered-top">
+            <div class="pull-left">
+                Les informations contenues sur ce site sont strictement confidentiels<br>
+                En cas de problème, contactez <a href="mailto:support@bde-insa-lyon.fr">le support</a>
+            </div>
+            <div id="copyright-notice" class="pull-right">&copy; 2017 BdE INSA Lyon</div>
         </footer>
     {% endblock %}
 {% endblock %}

@@ -1,41 +1,41 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">{% block navbar_title %}ProdManager{% endblock %}</a>
+{% load staticfiles %}
+<nav class="navbar navbar-toggleable-md fixed-to navbar-light bg-faded">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/"><img src="{% static 'img/bde.png' %}" class="logo">{% block navbar_title %}
+            Payments{% endblock %}</a>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        {% block navbar_nav %}
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
-        {% endblock %}
-        {% block navbar_rightmodule %}
-            <ul class="navbar-nav">
-                <li class="nav-item navbar-text">
-                    <span>{{ user.email }}</span>
-                    <a class="text-danger ml-2" href="{% url 'logout' %}" aria-label="Déconnexion"><i class="fa fa-sign-out"></i></a>
-                </li>
-            </ul>
-        {% endblock %}
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            {% block navbar_nav %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/trezo" id="dropdown01"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Trezo</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="/trezo/payments">Paiements</a>
+                            <a class="dropdown-item" href="/trezo/clients">Clients</a>
+                            <a class="dropdown-item" href="/trezo/products">Produits</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/applications">Applications</a>
+                    </li>
+                </ul>
+            {% endblock %}
+            {% block navbar_rightmodule %}
+                <ul class="navbar-nav">
+                    <li class="nav-item navbar-text">
+                        <span>{{ user.email }}</span>
+                        <a class="text-danger ml-2" href="{% url 'logout' %}" aria-label="Déconnexion"><i
+                                class="fa fa-sign-out"></i></a>
+                    </li>
+                </ul>
+            {% endblock %}
+        </div>
     </div>
 </nav>
